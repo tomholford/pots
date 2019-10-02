@@ -61,5 +61,14 @@ describe PotsGame do
         expect(subject).to eq(11)
       end
     end
+
+    context 'a huge number of pots' do
+      let(:pots) { (1..1000).to_a }
+
+      # when running this spec without dynamic programming, it takes a loooong time :)
+      it 'uses the cache' do
+        expect(subject).to eq(250500)
+      end
+    end
   end
 end
