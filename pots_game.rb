@@ -23,9 +23,9 @@ class PotsGame
     first_pot = pots[first_posn]
     last_pot = pots[last_posn]
 
+    return cache[first_posn][last_posn] if cache[first_posn][last_posn].present?
     return first_pot if first_posn == last_posn
     return [first_pot, last_pot].max if first_posn + 1 == last_posn
-    return cache[first_posn][last_posn] if cache[first_posn][last_posn].present?
 
     pick_first = pots[first_posn] + [maximize_gold(first_posn: first_posn + 2, last_posn: last_posn), maximize_gold(first_posn: first_posn + 1, last_posn: last_posn - 1)].min
     pick_last = pots[last_posn] + [maximize_gold(first_posn: first_posn + 1, last_posn: last_posn - 1), maximize_gold(first_posn: first_posn, last_posn: last_posn - 2)].min
